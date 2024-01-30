@@ -1,0 +1,32 @@
+### add a drug
+POST http://localhost:8081/pharm/v1/drug
+Content-Type: application/json
+
+{
+    "drug_name": "product_three",
+    "description": "product_three",
+    "drug_code": "0003c",
+    "unit_of_pricing": "tab",
+    "price": 450
+}
+
+### get all drugs
+GET http://localhost:8081/pharm/v1/drugs
+
+### get a single drug by id
+GET http://localhost:8081/pharm/v1/drug/65ae90ac53cf986d5ff44645
+
+### update a drug by id
+PATCH http://localhost:8081/pharm/v1/drug/65ae90af53cf986d5ff44647
+Content-Type: application/json
+
+{
+    "drug_name": "product_two",
+    "description": "product_two",
+    "drug_code": "0002b",
+    "unit_of_pricing": "liquid",
+    "price": 200
+}
+
+### delete a drug
+DELETE http://localhost:8081/pharm/v1/drug/65ae915f009e18ff9040419d
