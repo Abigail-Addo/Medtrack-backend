@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllLabs, createLab, getLabById, updateLabById, deleteLabById } from "../controllers/lab.js";
+import { getAllLabs, createLab, getLabById, updateLabById, deleteLabById, getLabType } from "../controllers/lab.js";
 
 const router = express.Router();
 
@@ -19,5 +19,8 @@ router.patch("/v1/lab/:id", updateLabById);
 
 // delete an item by id
 router.delete("/v1/lab/:id", deleteLabById);
+
+// get unit of pricing
+router.get("/v1/labType", getLabType);
 
 export default router;

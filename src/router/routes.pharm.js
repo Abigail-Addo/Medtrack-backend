@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllDrugs,createDrug, getDrugById,updateDrugById, deleteDrugById } from "../controllers/pharmacy.js";
+import { getAllDrugs,createDrug, getDrugById,updateDrugById, deleteDrugById, getUnitOfPricing, searchDrugs } from "../controllers/pharmacy.js";
 
 const router = express.Router();
 
@@ -19,5 +19,13 @@ router.patch("/v1/drug/:id", updateDrugById);
 
 // delete an item by id
 router.delete("/v1/drug/:id", deleteDrugById);
+
+// get unit of pricing
+router.get("/v1/unit-of-pricing", getUnitOfPricing);
+
+// search
+router.get("/v1/search-drugs", searchDrugs);
+
+
 
 export default router;
