@@ -27,6 +27,12 @@ const PharmacySchema = mongoose.Schema({
     { timestamps: true }
 )
 
+PharmacySchema.pre('save', function (next) {
+    // Convert drug_code to uppercase before saving
+    this.drug_code = this.drug_code.toUpperCase();
+    next();
+});
+
 // model - interacting with our schema
 const Pharmacy = mongoose.model('Pharmacy',PharmacySchema)
 

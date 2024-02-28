@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+import morgan from "morgan";
 
 import pharmarcyRoutes from "./src/router/routes.pharm.js";
 import labRoutes from "./src/router/routes.lab.js";
@@ -14,7 +15,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 
 app.use(bodyParser.json());
-
+app.use(morgan("dev"));
 app.use(
   cors({
     origin: "*",

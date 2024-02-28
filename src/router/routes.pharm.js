@@ -3,8 +3,6 @@ import { getAllDrugs,createDrug, getDrugById,updateDrugById, deleteDrugById, get
 
 const router = express.Router();
 
-// import Pharmacy from "../controllers/pharmacy.js";
-
 //get all items
 router.get("/v1/drugs", getAllDrugs);
 
@@ -24,7 +22,7 @@ router.delete("/v1/drug/:id", deleteDrugById);
 router.get("/v1/unit-of-pricing", getUnitOfPricing);
 
 // search
-router.get("/v1/search-drugs", searchDrugs);
+router.get("/v1/search-drugs/:search", searchDrugs);
 
 
 
