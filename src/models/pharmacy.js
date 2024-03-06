@@ -1,39 +1,35 @@
-import mongoose from 'mongoose';
-
+import mongoose from "mongoose";
 
 // defining a schema - structure of the table
-const PharmacySchema = mongoose.Schema({
+const PharmacySchema = mongoose.Schema(
+  {
     drug_name: {
-        type: String,
-        required: [true, 'Field cannot be empty']
+      type: String,
+      required: [true, "Drug Name cannot be empty"],
     },
     description: {
-        type: String,
-        required: [true, 'Field cannot be empty']
+      type: String,
+      required: [true, "Description cannot be empty"],
     },
     drug_code: {
-        type: String,
-        required: [true, 'Field cannot be empty']
+      type: String,
+      required: [true, "Drug Code cannot be empty"],
+      unique: true,
     },
     unit_of_pricing: {
-        type: String,
-        required: [true, 'Field cannot be empty']
+      type: String,
+      required: [true, "Unit of Pricing cannot be empty"],
     },
     price: {
-        type: Number,
-        required: [true, 'Field cannot be empty']
+      type: Number,
+      required: [true, "Price cannot be empty"],
     },
-},
-    { timestamps: true }
-)
+  },
+  { timestamps: true }
+);
 
-PharmacySchema.pre('save', function (next) {
-    // Convert drug_code to uppercase before saving
-    this.drug_code = this.drug_code.toUpperCase();
-    next();
-});
 
 // model - interacting with our schema
-const Pharmacy = mongoose.model('Pharmacy',PharmacySchema)
+const Pharmacy = mongoose.model("Pharmacy", PharmacySchema);
 
-export default Pharmacy
+export default Pharmacy;

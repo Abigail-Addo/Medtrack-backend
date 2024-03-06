@@ -5,27 +5,28 @@ import mongoose from 'mongoose';
 const LabSchema = mongoose.Schema({
     lab_item: {
         type: String,
-        required: [true, 'Field cannot be empty']
+        required: [true, 'Lab item cannot be empty']
     },
     lab_type: {
         type: String,
-        required: [true, 'Field cannot be empty']
+        enum: ['Radiology', 'Laboratory'],
+        required: [true, 'Lab type cannot be empty']
     },
     category: {
         type: String,
-        required: [true, 'Field cannot be empty']
+        required: [true, 'Category cannot be empty']
     },
     sub_category: {
         type: String,
-        required: [true, 'Field cannot be empty']
+        required: [true, 'Sub category cannot be empty']
     },
     code: {
         type: String,
-        required: [true, 'Field cannot be empty']
+        required: [true, 'Code cannot be empty']
     },
     price: {
         type: Number,
-        required: [true, 'Field cannot be empty']
+        required: [true, 'Prise cannot be empty']
     },
 },
     { timestamps: true }

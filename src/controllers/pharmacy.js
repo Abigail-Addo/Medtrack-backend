@@ -3,7 +3,7 @@ import Pharmacy from "../models/pharmacy.js";
 // get all drugs
 export const getAllDrugs = async (req, res) => {
   try {
-    let drugs = await Pharmacy.find();
+    const drugs = await Pharmacy.find().sort({ drug_name: 1 });
     return res.status(200).json(drugs);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -39,8 +39,6 @@ export const getUnitOfPricing = async (req, res) => {
 
     // Return the key-value pairs
     return res.status(200).json(unitOfPricingMap);
-
-    
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -49,8 +47,17 @@ export const getUnitOfPricing = async (req, res) => {
 // add an item
 export const createDrug = async (req, res) => {
   try {
-    let drug = await Pharmacy.create(req.body);
-    return res.status(201).json(drug);
+    const existingDrug = await Pharmacy.findOne({
+      drug_code: req.body.drug_code,
+    });
+
+    if (existingDrug) {
+      return res.status(400).json({ message: "Drug code already exists" });
+    }
+
+    const drugs = await Pharmacy.create(req.body);
+
+    return res.status(201).json(drugs);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -110,7 +117,7 @@ export const searchDrugs = async (req, res) => {
     const drugs = await Pharmacy.find({
       $or: [
         { drug_name: { $regex: search, $options: "i" } },
-        { drug_code: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
       ],
     });
 

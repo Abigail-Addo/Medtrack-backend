@@ -3,10 +3,10 @@ POST http://localhost:8081/pharm/v1/drug
 Content-Type: application/json
 
 {
-    "drug_name": "product_three",
-    "description": "product_three",
-    "drug_code": "0003c",
-    "unit_of_pricing": "tab",
+    "drug_name": "hjgkrml",
+    "description": "bbjn",
+    "drug_code": "BUDESOGA1",
+    "unit_of_pricing": "tablet",
     "price": 450
 }
 

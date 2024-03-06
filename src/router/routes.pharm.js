@@ -22,7 +22,7 @@ router.delete("/v1/drug/:id", deleteDrugById);
 router.get("/v1/unit-of-pricing", getUnitOfPricing);
 
 // search
-router.get("/v1/search-drugs/:search", searchDrugs);
+router.get("/v1/search-drugs", searchDrugs);
 
 
 

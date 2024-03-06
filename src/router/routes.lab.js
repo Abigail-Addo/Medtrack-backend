@@ -1,5 +1,14 @@
 import express from "express";
-import { getAllLabs, createLab, getLabById, updateLabById, deleteLabById, getLabType } from "../controllers/lab.js";
+import {
+  getAllLabs,
+  createLab,
+  getLabById,
+  updateLabById,
+  deleteLabById,
+  getLabType,
+  getAllLabsByType,
+  searchLabs
+} from "../controllers/lab.js";
 
 const router = express.Router();
 
@@ -22,5 +31,11 @@ router.delete("/v1/lab/:id", deleteLabById);
 
 // get unit of pricing
 router.get("/v1/labType", getLabType);
+
+// get all labs based on lab type
+router.post("/v1/getlabType", getAllLabsByType);
+
+// search
+router.get("/v1/search-labs", searchLabs);
 
 export default router;

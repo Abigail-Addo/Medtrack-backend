@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "lab_item": "product_tw",
-    "lab_type": "product_to",
+    "lab_type": "Laboratory",
     "category": "product_two",
     "sub_category": "product_two",
     "code": "B33",
@@ -31,3 +31,11 @@ Content-Type: application/json
 
 ### delete a lab
 DELETE http://localhost:8081/lab/v1/lab/65b7c71edce18c5c72b3dd86
+
+### get all labs based on lab type
+POST http://localhost:8081/lab/v1/getlabType
+Content-Type: application/json
+
+{
+    "lab_type": "Laboratory"
+}
