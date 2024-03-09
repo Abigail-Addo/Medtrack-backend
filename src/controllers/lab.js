@@ -95,6 +95,16 @@ export const getLabById = async (req, res) => {
 // update an item by id
 export const updateLabById = async (req, res) => {
   try {
+
+    const existingLab = await Lab.findOne({
+      code: req.body.code,
+      _id: { $ne: req.params.id }
+    });
+
+    if (existingLab) {
+      return res.status(400).json({ message: "Lab item already exists" });
+    }
+
     let lab = await Lab.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });

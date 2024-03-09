@@ -79,9 +79,20 @@ export const getDrugById = async (req, res) => {
 // update an item by id
 export const updateDrugById = async (req, res) => {
   try {
+
+    const existingDrug = await Pharmacy.findOne({
+      drug_code: req.body.drug_code,
+      _id: { $ne: req.params.id } // Exclude the current drug from the check
+    });
+
+    if (existingDrug) {
+      return res.status(400).json({ message: "Drug code already exists" });
+    }
+
     let drug = await Pharmacy.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
+
     if (!drug) {
       return res.status(404).json({ message: "Drug does not exist" });
     }
