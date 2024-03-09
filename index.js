@@ -2,8 +2,8 @@ import express from "express";
 const app = express();
 import morgan from "morgan";
 
-import pharmarcyRoutes from "./src/router/routes.pharm.js";
-import labRoutes from "./src/router/routes.lab.js";
+import router from "./src/router/routes.js";
+// import labRoutes from "./src/router/routes.lab.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -23,8 +23,7 @@ app.use(
 );
 
 // api
-app.use("/pharm", pharmarcyRoutes);
-app.use("/lab", labRoutes);
+app.use("/pharm", router);
 
 dbConnect();
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
