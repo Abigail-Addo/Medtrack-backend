@@ -98,7 +98,6 @@ export const updateLabById = async (req, res) => {
 
     const existingLab = await Lab.findOne({
       code: req.body.code,
-      _id: { $ne: req.params.id }
     });
 
     if (existingLab) {
