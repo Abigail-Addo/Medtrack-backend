@@ -81,6 +81,7 @@ export const updateDrugById = async (req, res) => {
   try {
     const existingDrug = await Pharmacy.findOne({
       drug_code: req.body.drug_code,
+      _id: { $ne: req.params.id } // Exclude the current lab item from the check
     });
 
     if (existingDrug) {

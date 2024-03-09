@@ -98,6 +98,7 @@ export const updateLabById = async (req, res) => {
 
     const existingLab = await Lab.findOne({
       code: req.body.code,
+      _id: { $ne: req.params.id } // Exclude the current lab item from the check
     });
 
     if (existingLab) {
