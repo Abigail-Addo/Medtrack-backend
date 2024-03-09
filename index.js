@@ -2,8 +2,7 @@ import express from "express";
 const app = express();
 import morgan from "morgan";
 
-import router from "./src/router/routes.js";
-// import labRoutes from "./src/router/routes.lab.js";
+import routes from "./src/router/routes.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -21,7 +20,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 // api
-app.use("/medtrack", router);
+app.use("/medtrack", routes);
 
 dbConnect();
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
