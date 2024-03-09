@@ -12,15 +12,13 @@ import dbConnect from "./config/db.js";
 const PORT = process.env.PORT;
 
 import cors from "cors";
-import bodyParser from "body-parser";
+app.use(
+  cors()
+);
 
+import bodyParser from "body-parser";
 app.use(bodyParser.json());
 app.use(morgan("dev"));
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 // api
 app.use("/medtrack", router);
